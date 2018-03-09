@@ -1,0 +1,19 @@
+{
+  "name": "damers",
+  "version": "1.0.0",
+  "description": "un jeu de dames cool",
+  "main": "index.js",
+  "dependencies": {
+    "react-native-fbsdk": "^0.7.0",
+    "react-native-google-signin": "^0.8.1",
+    "react-native-scripts": "^1.11.1",
+    "react-navigation": "^1.1.2",
+    "watchman": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "laurie",
+  "license": "MIT"
+}

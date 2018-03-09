@@ -1,0 +1,322 @@
+
+
+$square_one_color: white;
+$square_two_color: #ce908e;
+$piece_one_color: #424451;
+$piece_two_color: #3f749e;
+$border: inherit;
+$font:'Luckiest Guy', cursive;
+
+.save{
+
+	cursor:pointer;
+}
+
+// .button-collapse{
+
+// 	display: inline-block;
+// 	margin-left:30px;
+// 	margin-top:2rem;
+
+// }
+// button{
+
+// 	border:none;
+// 	background-color:transparent;
+
+// }
+
+h2{
+	text-align:center;
+	margin-top:0px;
+	text-transform:uppercase;
+	font-family:$font;
+	// margin-left:14rem;
+	line-height:70px;
+	letter-spacing:2px;
+}
+
+.acc{
+
+	height:100vh;
+	background-image:url("../img/fond-orange.png");
+}
+#nav {
+	position: relative;
+	z-index: 998;
+}
+
+.close:before, .close:after {
+  transform: rotate(-45deg);
+  content: '';
+  position: absolute;
+  top:3rem;
+  right:2rem;
+  display: block;
+  height: 10px;
+  width: 45px;
+  background-color: #fff;
+  transition: all 0.25s ease-out;
+}
+.close:after {
+  transform: rotate(-135deg);
+}
+.close:hover:before, .close:hover:after {
+  transform: rotate(0deg);
+}
+
+
+nav a .info{
+
+	position: absolute;
+	bottom:0px;
+	right:10px;
+	font-size:3rem;
+	cursor:pointer;
+
+}
+
+nav a .chevron{
+
+	position:absolute;
+	bottom:0px;
+	left:10px;
+	font-size:3rem;
+
+}
+
+.side-nav{
+
+	background-color:#5387FA;
+	font-family:$font;
+	width:100vw;
+	height:100vh;
+	text-align:center;
+	padding-top:9rem;
+}
+
+button{
+
+	background-color:white;
+	border-radius:60px;
+	border-color:black;
+	padding:10px;
+	height:65px;
+	width:73vw;
+}
+// .waves-effect.waves-brown .waves-ripple{
+
+// 	background-color: rgb(83, 147, 244);
+// }
+
+// a.waves-effect.waves-light(href="/") Enquire
+
+ul li{
+
+	margin-bottom:3rem;
+	background-color:inherit;
+
+}
+
+.slide-out a:hover{
+	text-decoration:none;
+	background:white;
+}
+
+
+ul li:hover{
+	background-color:inherit;
+	text-decoration:none;
+}
+
+h1{
+	cursor: default;
+}
+
+#board{
+
+	border: 1px solid $border;
+}
+
+.row{
+	display: flex;
+	width: 100%;
+	margin-bottom:0px;
+}
+
+
+.square{
+	display: flex;
+	justify-content: center;
+	width: 73px;
+	height: 73px;
+	border: 0px solid #ce908e;
+}
+
+.red2{
+	background: $square_one_color;
+
+}
+.black2{
+	background: $square_two_color;
+}
+
+.red2.piece{
+	background: $piece_two_color;
+}
+
+.black2.piece{
+	background: $piece_one_color;
+}
+
+.piece{
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	margin-top: 12px;
+	border: 0px solid $border;
+}
+
+.center{
+	justify-content: center;
+}
+
+.piece{
+	line-height: 50px;
+	text-align: center;
+	color: white;
+}
+
+.piece.active.black2{
+	background: lighten(#c95820, 20%) !important;
+}
+
+.piece.active.black2:hover, .piece.active.red:hover{
+	cursor: pointer;
+}
+
+.piece.active.red2{
+	background: lighten(#c95820, 30%) !important;
+}
+
+.piece.active_group:hover{
+	cursor: pointer;
+}
+
+.piece.red2:active{
+
+
+}
+
+// .square:hover{
+
+// 	border:2px solid #55a029;
+// }
+
+// .black2.piece.active_group:hover{
+// 	background: lighten($piece_one_color, 10%);
+// }
+
+// .red2.piece.active_group:hover{
+// 	background: lighten($piece_two_color, 10%);
+// }
+
+.info{
+
+	height:100vh;
+	background-color:#5387FA;
+	width:100vw;
+	display:none;
+
+}
+
+.info h2{
+
+	text-align:center;
+	font-size:35px;
+}
+
+.inf{
+
+	color:white;
+	font-size:30px;
+}
+
+@media screen and (min-width:320px) and (max-width: 640px) {
+
+
+h2{
+
+	color:white;
+
+
+}
+
+#board{
+
+	border: 1px solid $border;
+	margin-top:7rem;
+}
+
+// .button-collapse i{
+
+// 	color:#424451;
+
+// }
+
+.square{
+	display: flex;
+	justify-content: center;
+	width: 50px;
+	height:50px;
+	border: 1px solid #ce908e;
+}
+
+.piece{
+	width: 47px;
+	height: 47px;
+	border-radius: 100%;
+	border: 0px solid $border;
+}
+
+.red2.piece{
+	background: $piece_two_color;
+	margin-top:0px;
+	border: 1px solid inherit;
+}
+
+.black2.piece{
+	background: $piece_one_color;
+		margin-top:0px;
+		border: 1px solid inherit;
+}
+.red2{
+	background: $square_one_color;
+
+}
+.black2{
+	background: $square_two_color;
+}
+
+
+
+
+}
+
+#menuh {
+	position: absolute;
+	z-index: 999;
+	top:2px;
+	cursor: pointer;
+	color:white;
+	padding-left:2rem;
+}
+
+#slide-out {
+	transform: translateX(-100vw);
+	transition: transform 0.4s linear;
+	overflow:hidden;
+}
+#slide-out.is-active {
+	transform: translateX(0);
+}
