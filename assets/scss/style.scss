@@ -7,24 +7,12 @@ $piece_two_color: #3f749e;
 $border: inherit;
 $font:'Luckiest Guy', cursive;
 
+
+
 .save{
 
 	cursor:pointer;
 }
-
-// .button-collapse{
-
-// 	display: inline-block;
-// 	margin-left:30px;
-// 	margin-top:2rem;
-
-// }
-// button{
-
-// 	border:none;
-// 	background-color:transparent;
-
-// }
 
 h2{
 	text-align:center;
@@ -36,11 +24,76 @@ h2{
 	letter-spacing:2px;
 }
 
+.fa-users, .fa-cogs, .fa-bomb, .fa-database{
+
+	margin-right:10px;
+}
+
 .acc{
 
 	height:100vh;
-	background-image:url("../img/fond-orange.png");
+	background-image:url("../img/train.jpg");
+	background-size:500px 700px;
+	width:100%;
+	text-align:center;
+	padding-top:15rem;
+	background-position:center center;
+	
+
+
 }
+.acc .num1, .num2, .num3, .num4{
+
+	border-radius:15px;
+	padding:10px;
+	height:65px;
+	width:68vw;
+	margin-bottom:1rem;
+	color:white;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	font-family:$font;
+	font-size:23px;
+	outline:none;
+
+}
+
+.num1{
+
+	background-color:#00d7f7;
+	border:1px solid #00d7f7;
+	
+}
+.num2{
+	background-color:#e55b8b;
+	border:1px solid #e55b8b;
+}
+.num3{
+	background-color:#5b79f7;
+	border:1px solid #5b79f7;
+}
+.num4{
+	background-color:#f7be00;
+	border:1px solid #f7be00;
+}
+
+.num5{
+	width:110px;
+	height:40px;	
+	background-color:#5b79f7;
+	border:1px solid #5b79f7;
+	border-radius:15px;
+	position:relative;
+	top:5rem;
+	left:12rem;
+	color:white;
+	font-family:$font;
+
+}
+.acc .num5 img{
+	margin-right:1rem;
+}
+
 #nav {
 	position: relative;
 	z-index: 998;
@@ -95,7 +148,7 @@ nav a .chevron{
 	padding-top:9rem;
 }
 
-button{
+ul button{
 
 	background-color:white;
 	border-radius:60px;
@@ -136,6 +189,7 @@ h1{
 #board{
 
 	border: 1px solid $border;
+	margin-bottom:6rem;
 }
 
 .row{
@@ -208,19 +262,6 @@ h1{
 
 }
 
-// .square:hover{
-
-// 	border:2px solid #55a029;
-// }
-
-// .black2.piece.active_group:hover{
-// 	background: lighten($piece_one_color, 10%);
-// }
-
-// .red2.piece.active_group:hover{
-// 	background: lighten($piece_two_color, 10%);
-// }
-
 .info{
 
 	height:100vh;
@@ -240,6 +281,113 @@ h1{
 
 	color:white;
 	font-size:30px;
+}
+
+.profil{
+        background-image: url("../img/vue2.jpg");
+        height: 100vh;
+        // background-position:center center;
+    }
+    // input, textarea, select{
+    //     display: flex;
+    //     margin:0 auto;
+    //     margin-bottom: 2rem;
+    //     margin-top: 1rem;
+    // }
+
+    table{
+        margin:0 auto;
+    }
+
+    p{
+        text-align: center;
+        margin-bottom: 2rem;
+        font-family: 'Luckiest Guy', cursive;
+    }
+    ::placeholder{
+        font-family: 'Luckiest Guy', cursive;
+        text-align:center;
+        color:black;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    option{
+        text-align: center;
+    }
+
+
+input{
+
+	border:2px solid black;
+	background-color:white;
+	border-radius:7px;
+	width:40%;
+	font-family: 'Luckiest Guy', cursive;
+	padding:12px 20px;
+	letter-spacing:1px;
+}
+
+input[type=text]:not(.browser-default){
+
+	border:2px solid black;
+	width:50%;
+	border-radius:7px;
+    outline: none;
+    margin:0 auto;
+    margin-bottom:10px;
+    background-color:white;
+   
+}
+
+input[type=number]:not(.browser-default){
+
+	border:2px solid black;
+	width:50%;
+	border-radius:7px;
+	outline: none;
+	margin:0 auto;
+	background-color:white;
+}
+
+
+
+textarea{
+    
+    width: 60%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 7px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    height:12rem;
+    margin-top:10px;
+    margin-bottom:5rem;
+    background-color:white;
+    font-family: 'Luckiest Guy', cursive;
+
+}
+
+form{
+
+	text-align: center;
+	margin-bottom:5rem;
+	height:100vh;
+}
+
+//     input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
+//     border: 2px solid #5387fa;
+// }
+
+.vueProfil{
+
+	height:100vh;
+	background-image: url("../img/darktrain.jpg");
 }
 
 @media screen and (min-width:320px) and (max-width: 640px) {
@@ -297,9 +445,6 @@ h2{
 .black2{
 	background: $square_two_color;
 }
-
-
-
 
 }
 

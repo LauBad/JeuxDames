@@ -9,9 +9,61 @@ h2 {
   line-height: 70px;
   letter-spacing: 2px; }
 
+.fa-users, .fa-cogs, .fa-bomb, .fa-database {
+  margin-right: 10px; }
+
 .acc {
   height: 100vh;
-  background-image: url("../img/fond-orange.png"); }
+  background-image: url("../img/train.jpg");
+  background-size: 500px 700px;
+  width: 100%;
+  text-align: center;
+  padding-top: 15rem;
+  background-position: center center; }
+
+.acc .num1, .num2, .num3, .num4 {
+  border-radius: 15px;
+  padding: 10px;
+  height: 65px;
+  width: 68vw;
+  margin-bottom: 1rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 23px;
+  outline: none; }
+
+.num1 {
+  background-color: #00d7f7;
+  border: 1px solid #00d7f7; }
+
+.num2 {
+  background-color: #e55b8b;
+  border: 1px solid #e55b8b; }
+
+.num3 {
+  background-color: #5b79f7;
+  border: 1px solid #5b79f7; }
+
+.num4 {
+  background-color: #f7be00;
+  border: 1px solid #f7be00; }
+
+.num5 {
+  width: 110px;
+  height: 40px;
+  background-color: #5b79f7;
+  border: 1px solid #5b79f7;
+  border-radius: 15px;
+  position: relative;
+  top: 5rem;
+  left: 12rem;
+  color: white;
+  font-family: "Luckiest Guy", cursive; }
+
+.acc .num5 img {
+  margin-right: 1rem; }
 
 #nav {
   position: relative;
@@ -56,7 +108,7 @@ nav a .chevron {
   text-align: center;
   padding-top: 9rem; }
 
-button {
+ul button {
   background-color: white;
   border-radius: 60px;
   border-color: black;
@@ -80,7 +132,8 @@ h1 {
   cursor: default; }
 
 #board {
-  border: 1px solid inherit; }
+  border: 1px solid inherit;
+  margin-bottom: 6rem; }
 
 .row {
   display: flex;
@@ -146,6 +199,80 @@ h1 {
 .inf {
   color: white;
   font-size: 30px; }
+
+.profil {
+  background-image: url("../img/vue2.jpg");
+  height: 100vh; }
+
+table {
+  margin: 0 auto; }
+
+p {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Luckiest Guy', cursive; }
+
+::placeholder {
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  color: black; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+option {
+  text-align: center; }
+
+input {
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 7px;
+  width: 40%;
+  font-family: 'Luckiest Guy', cursive;
+  padding: 12px 20px;
+  letter-spacing: 1px; }
+
+input[type=text]:not(.browser-default) {
+  border: 2px solid black;
+  width: 50%;
+  border-radius: 7px;
+  outline: none;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: white; }
+
+input[type=number]:not(.browser-default) {
+  border: 2px solid black;
+  width: 50%;
+  border-radius: 7px;
+  outline: none;
+  margin: 0 auto;
+  background-color: white; }
+
+textarea {
+  width: 60%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 7px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  height: 12rem;
+  margin-top: 10px;
+  margin-bottom: 5rem;
+  background-color: white;
+  font-family: 'Luckiest Guy', cursive; }
+
+form {
+  text-align: center;
+  margin-bottom: 5rem;
+  height: 100vh; }
+
+.vueProfil {
+  height: 100vh;
+  background-image: url("../img/darktrain.jpg"); }
 
 @media screen and (min-width: 320px) and (max-width: 640px) {
   h2 {

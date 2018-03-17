@@ -38,16 +38,23 @@ function toggleSidebar(){
 	document.getElementById("slide-out").classList.toggle("is-active");
 }
 
+function alerte(){
+
+	alert("Ton profil à été créé avec succès");
+}
+
 function addListeners(){
 
 	const burger = document.getElementById("menuh");
 	const close = document.getElementById("close");
 	const reprendre = document.getElementById("reprendre");
 	const quitter = document.getElementById("quitter");
+	const submit = document.getElementById("submit");
 	close.onclick = toggleSidebar;
 	burger.onclick = toggleSidebar;
 	reprendre.onclick = toggleSidebar;
 	quitter.onclick = toggleSidebar;
+	submit.onclick = alerte;
 
 	for(var i = 0; i < document.querySelectorAll('.square').length; i++){
     (function () {
@@ -80,14 +87,34 @@ function movePiece(old, n, activePieceRow, activePieceColumn, squareRow, squareC
 	old.innerHTML = "";
 	if(Math.abs(numbers.indexOf(activePieceRow) - numbers.indexOf(squareRow)) == 2 &&
 		 Math.abs(letters.indexOf(activePieceColumn) - letters.indexOf(squareColumn)) == 2){
-
+		var middleSquare = findMiddleSquare(activePieceRow, squareRow, activePieceColumn, squareColumn);
+		middleSquare.innerHTML = "";
 	}
 	if(canMove == false){
+		canMakeKing(n);
 		resetActivePiece();
 	}
 	else{
 		setActivePiece(n);
 	}
+}
+function canMakeKing(s){
+	if(findColor(s) == 'black2' && findRow(s) == 'eight'){
+		makeKing(s);
+	}
+	else if(findColor(s) == 'red2' && findRow(s) == 'one'){
+		makeKing(s);
+	}
+}
+
+function isKing(s){
+	if(s.children && s.children[0].innerHTML == 'K'){
+		return true;
+	}
+}
+
+function makeKing(s){
+	s.children[0].innerHTML = "K";
 }
 
 function findColor(s){
@@ -103,7 +130,8 @@ function isValidMove(square, active = activePiece){
 	var squareColumn = findColumn(square);
 	var oppositeColor = '';
 	activeColor == 'black2' ? oppositeColor = 'red2' : oppositeColor = 'black2';
-
+	var middleSquare = findMiddleSquare(activePieceRow, squareRow, activePieceColumn, squareColumn);
+	
 	if(activeColor == 'black2'){
 		var rowDifference = -1;
 
@@ -118,17 +146,63 @@ function isValidMove(square, active = activePiece){
 		canMove = false;
 		return true;
 	}
+	else if(testTwo(active, square, rowDifference)){
+		if(canJump(square)){
+			canMove = true;
+			removeActiveGroup(currentColor);
+		}
+		else{
+			canMove = false;
+		}
+		return true;
+	}
 
 	return false;
 }
 
 function testOne(square, rowDifference){
-	if((numbers.indexOf(findRow(activePiece)) - numbers.indexOf(findRow(square)) == rowDifference && Math.abs(numbers.indexOf(findRow(activePiece)) - numbers.indexOf(findRow(square))) == 1) &&
+	if((numbers.indexOf(findRow(activePiece)) - numbers.indexOf(findRow(square)) == rowDifference ||
+	    isKing(activePiece) && Math.abs(numbers.indexOf(findRow(activePiece)) - numbers.indexOf(findRow(square))) == 1) &&
 		 Math.abs(letters.indexOf(findColumn(activePiece)) - letters.indexOf(findColumn(square))) == 1 && square.children.length == 0 &&
 		 canMove == false){
 		return true;
 
 	}
+}
+
+function testTwo(active, square, rowDifference){
+	var middleSquare = findMiddleSquare(findRow(active), findRow(square), findColumn(active), findColumn(square));
+	var oppositeColor = '';
+	activeColor == 'black2' ? oppositeColor = 'red2' : oppositeColor = 'black2';
+	if(square && middleSquare && middleSquare.children[0] && 
+				  (numbers.indexOf(findRow(active)) - numbers.indexOf(findRow(square)) == rowDifference * 2 ||
+				  (isKing(activePiece) && Math.abs(numbers.indexOf(findRow(active)) - numbers.indexOf(findRow(square))) == 2)) && 
+				  Math.abs(letters.indexOf(findColumn(active)) - letters.indexOf(findColumn(square))) == 2 && square.children.length == 0 &&
+				  findColor(middleSquare) == oppositeColor){
+		return true;
+	}
+}
+
+function canJump(s){
+	var squareRow = findRow(s);
+	var squareColumn = findColumn(s);
+	var downLeft = findSquare(numbers[numbers.indexOf(squareRow) + 2], letters[letters.indexOf(squareColumn) - 2]);
+	var downRight = findSquare(numbers[numbers.indexOf(squareRow) + 2], letters[letters.indexOf(squareColumn) + 2]);
+	var upLeft = findSquare(numbers[numbers.indexOf(squareRow) - 2], letters[letters.indexOf(squareColumn) - 2]);
+	var upRight = findSquare(numbers[numbers.indexOf(squareRow) - 2], letters[letters.indexOf(squareColumn) + 2]);
+	if((activeColor == 'black2' || isKing(activePiece)) && testTwo(s, downLeft, -1)){
+		return true;
+	}
+	else if((activeColor == 'black2' || isKing(activePiece)) && testTwo(s, downRight, -1)){
+		return true;
+	}
+	else if((activeColor == 'red2' || isKing(activePiece)) && testTwo(s, upLeft, 1)){
+		return true;
+	}
+	else if((activeColor == 'red2' || isKing(activePiece)) && testTwo(s, upRight, 1)){
+		return true;
+	}
+	return false;
 }
 
 function findRow(s){
@@ -146,7 +220,17 @@ function findColumn(s){
 function findSquare(row, column){
 	return document.querySelector('.row.' + row + ' div.square.' + column);
 }
+function findMiddleSquare (activePieceRow, squareRow, activePieceColumn, squareColumn){
+	var activeRowIndex = numbers.indexOf(activePieceRow);
+	var squareRowIndex = numbers.indexOf(squareRow);
+	var middleRow = numbers[Math.abs((activeRowIndex + squareRowIndex)/2)];
+	
+	var activeColumnIndex = letters.indexOf(activePieceColumn);
+	var squareColumnIndex = letters.indexOf(squareColumn);
+	var middleColumn = letters[Math.abs((activeColumnIndex + squareColumnIndex)/2)];
 
+	return findSquare(middleRow, middleColumn);
+}
 
 function reload() {
     location.reload();
@@ -175,7 +259,7 @@ function resetActivePiece(){
 
 function changeColor(){
 	removeActiveGroup(currentColor);
-	currentColor == 'black2' ? currentColor = 'red2' : currentColor = 'black2';
+	currentColor == 'red2' ? currentColor = 'black2' : currentColor = 'red2';
 	addActiveGroup(currentColor);
 }
 
@@ -269,3 +353,37 @@ if(!localStorage.getItem('pions', tab) && ('colorS', currentColor)){
 
 console.log(localStorage);
 }
+
+
+
+// var http = require('http');
+
+// var server = http.createServer(function(req, res) {
+//   res.writeHead(200);
+//   res.end('Salut tout le monde !');
+// });
+// server.listen(8081);
+
+
+// var http = require('http');
+// var fs = require('fs');
+
+
+// var server = http.createServer(function(req, res) {
+//     fs.readFile('./index.html', 'utf-8', function(error, content) {
+//         res.writeHead(200, {"Content-Type": "text/html"});
+//         res.end(content);
+//     });
+// });
+
+// var io = require('socket.io').listen(server);
+// io.sockets.on('connection', function (socket) {
+//     socket.emit('message', 'Vous êtes bien connecté !');
+//     socket.on('message', function (message) {
+//         console.log('Un client me parle ! Il me dit : ' + message);
+//     });	
+
+// });
+
+
+// server.listen(8081);
